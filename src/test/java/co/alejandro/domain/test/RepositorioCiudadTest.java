@@ -20,6 +20,35 @@ public class RepositorioCiudadTest {
 		// Assert
 		Assert.assertTrue(resultado);
 	}
+	
+	@Test
+	public void agregarUnaCiudadYQueYaExistanCiudadesYQueSeAgregueCorrectamente() {
+		// Arrange
+		RepositorioCiudad repo = new RepositorioCiudad();
+		Ciudad ciudad = new Ciudad("Rionegro", "Tutucán");
+		Ciudad ciudad2 = new Ciudad("El Retiro", "Represa de La Fé");
+		repo.agregar(ciudad2);
+		
+		// Act
+		boolean resultado = repo.agregar(ciudad);
+		
+		// Assert
+		Assert.assertTrue(resultado);
+	}
+	
+	@Test
+	public void agregarUnaCiudadYQueYaExista() {
+		// Arrange
+		RepositorioCiudad repo = new RepositorioCiudad();
+		Ciudad ciudad = new Ciudad("Rionegro", "Tutucán");
+		repo.agregar(ciudad);
+		
+		// Act
+		boolean resultado = repo.agregar(ciudad);
+		
+		// Assert
+		Assert.assertFalse(resultado);
+	}
 }
 
 
